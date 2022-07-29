@@ -10,6 +10,7 @@ public class Oscilation : MonoBehaviour
 
     // private variables
     private Vector3 startPos;
+    private const float tau = Mathf.PI * 2;
 
     void Start()
     {
@@ -21,7 +22,6 @@ public class Oscilation : MonoBehaviour
         if (period <= Mathf.Epsilon) { return; }
         float cycles = Time.time / period;
 
-        const float tau = Mathf.PI * 2;
         float rawSinWave = Mathf.Sin(cycles * tau);
 
         movementFactor = (rawSinWave + 1) / 2f;

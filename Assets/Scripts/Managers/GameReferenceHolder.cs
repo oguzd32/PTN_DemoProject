@@ -1,4 +1,5 @@
 using UnityEngine;
+using XDPaint;
 
 public static class Utilities
 {
@@ -18,6 +19,8 @@ public class GameReferenceHolder : MonoBehaviour
     [Header("Script References")] 
     public PlayerController playerController;
     public CameraFollow cameraFollow;
+    public PaintManager paintManager;
+    public EnemyController[] enemies;
     
     private void Awake()
     {

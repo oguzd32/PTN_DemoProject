@@ -7,7 +7,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float forwardSpeed = 10f;
     [SerializeField] private float horizontalSpeed = 3f;
     [SerializeField] private float clampX = 1.7f;
+    [SerializeField] private bool isClamp = false;
 
+    public bool isFail { get; set; } = false;
+    
     // cached components
     private CharacterController cc;
 
@@ -27,8 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isStarted = true;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(!isStarted) return;
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         speed.z = _ForwardSpeed;
         cc.SimpleMove(speed);
         
-        Clamp();
+        if(isClamp){Clamp();}
     }
 
     private void Clamp()

@@ -30,8 +30,7 @@ public class UIManager : MonoBehaviour
     // private variables
     private int currentLevel = 0;
     private int currentCoinCount = 0;
-    private int earnedCoinCount = 0;
-    
+
     private void Awake()
     {
         Instance = this;
