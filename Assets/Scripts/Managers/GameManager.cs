@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
         {
             enemy.StartGame();
         }
-        _GameReferenceHolder.paintManager.gameObject.SetActive(true);
     }
 
     public void EndGame(bool win, int amount = 0)

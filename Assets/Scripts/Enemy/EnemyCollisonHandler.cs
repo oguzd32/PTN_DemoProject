@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -45,12 +44,21 @@ public class EnemyCollisonHandler : MonoBehaviour
             case "Finish":
 
                 movement.enabled = false;
+
+                float randomX = 0;
+
+                while (Mathf.Abs(randomX) < 1.5f)
+                {
+                    randomX = Random.Range(-3f, 3f);
+                    Debug.Log(randomX);
+                }
+                
+                transform.DOMoveX(randomX, .5f);
                 controller.SetAnimation("Move", false);
                 controller.inFinal = true;
                 controller.SetAnimation("Win", true);
                 break;
         }
-        
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

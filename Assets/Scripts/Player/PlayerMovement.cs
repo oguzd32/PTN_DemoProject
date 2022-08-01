@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        if(!isStarted) return;
+        if(!isStarted || isFail) return;
         
         speed.x = TouchInput.SwerveDeltaX * 0.05f * horizontalSpeed;
         speed.z = _ForwardSpeed;

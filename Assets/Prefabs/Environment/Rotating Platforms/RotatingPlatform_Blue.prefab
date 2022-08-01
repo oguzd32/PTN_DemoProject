@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fc640a331064716919fa2be38d953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 20
   direction: {x: 0, y: 0, z: 1}
 --- !u!135 &1769364636303486021
 SphereCollider:
@@ -123,5 +123,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.46
+  m_Radius: 0.39
   m_Center: {x: 0.000000029802322, y: -0.000000029802322, z: 0}

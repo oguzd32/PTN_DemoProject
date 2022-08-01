@@ -33,49 +33,30 @@ public class PlayerCollisonHandler : MonoBehaviour
         {
             case "Obstacle":
 
-                controller.isFail = true;
-                
-                GameObject obj = _ObjectPooler.GetPooledObject("Hit");
-                obj.transform.position = otherObj.transform.position;
-                obj.SetActive(true);
-                transform.DOMoveZ(transform.position.z - 2, 1f);
-                controller.FailProcess();
+                HitObstacleProcess(otherObj);
                 break;
             
             case "Finish":
 
-                movement.enabled = false;
-                controller.SetAnimation("Move", false);
-                transform.DOMoveX(0, .5f);
-                controller.inFinal = true;
-                Sequence sequence = DOTween.Sequence();
-                sequence.AppendInterval(8f);
-                sequence.AppendCallback(() => _GameReferenceHolder.paintManager.enabled = false);
-                sequence.AppendCallback(() => StartCoroutine(UIManager.Instance.SpawnCoin(transform.position, 10)));
-                sequence.AppendInterval(1f);
-                sequence.AppendCallback(() => GameManager.Instance.EndGame(true));
-                sequence.AppendCallback(() =>
-                {
-                    foreach (GameObject confetti in _GameReferenceHolder.finishConfetties)
-                    {
-                        confetti.SetActive(true);
-                    }
-                });
+                FinishProcess();
                 break;
         }
-        
     }
 
     private void OnTriggerStay(Collider other)
     {
         if(controller.isFail) return;
-        
-        GameObject otherObj = other.gameObject;
-        
-        if (otherObj.TryGetComponent(out Rotator rotator))
+
+        OnRotatorProcess(other.gameObject);
+    }
+
+    private void OnRotatorProcess(GameObject rotatorObj)
+    {
+        if (rotatorObj.TryGetComponent(out Rotator rotator))
         {
             transform.position += Vector3.right * (rotator.GetDirection * Time.deltaTime);
         }
+        else return;
 
         if (Mathf.Abs(transform.position.x) > 2)
         {
@@ -90,5 +71,40 @@ public class PlayerCollisonHandler : MonoBehaviour
 
             controller.FailProcess();
         }
+    }
+
+    private void HitObstacleProcess(GameObject hitObj)
+    {
+        controller.isFail = true;
+                
+        GameObject obj = _ObjectPooler.GetPooledObject("Hit");
+        obj.transform.position = hitObj.transform.position;
+        obj.SetActive(true);
+        transform.DOMoveZ(transform.position.z - 2, 1f);
+        controller.FailProcess();
+    }
+    
+    private void FinishProcess()
+    {
+        Input.ResetInputAxes();
+        movement.enabled = false;
+        controller.SetAnimation("Move", false);
+        transform.DOMoveX(0, 1f);
+        controller.inFinal = true;
+        _GameReferenceHolder.paintManager.gameObject.SetActive(true);
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(8f);
+        sequence.AppendCallback(() => controller.SetAnimation("Win", true));
+        sequence.AppendCallback(() => _GameReferenceHolder.paintManager.enabled = false);
+        sequence.AppendCallback(() => StartCoroutine(UIManager.Instance.SpawnCoin(transform.position, 10)));
+        sequence.AppendInterval(1f);
+        sequence.AppendCallback(() => GameManager.Instance.EndGame(true));
+        sequence.AppendCallback(() =>
+        {
+            foreach (GameObject confetti in _GameReferenceHolder.finishConfetties)
+            {
+                confetti.SetActive(true);
+            }
+        });
     }
 }
