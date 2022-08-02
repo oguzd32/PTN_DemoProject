@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6629499661235381993}
   - component: {fileID: 8376791136825216819}
   - component: {fileID: 1193690581}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Half_Donut_01
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 3557279840228614751}
   - component: {fileID: 2924465201501987892}
   - component: {fileID: 6940815838904678285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Half_Donut_Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7277224018832552588}
   - component: {fileID: 1724881486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MovingStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 7725670417609494615}
   - component: {fileID: 8739541853653027072}
   - component: {fileID: 2236144308691832847}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Half_Donut_Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 7712738159139425622}
   - component: {fileID: 7603897175473724533}
   - component: {fileID: 647685417879588614}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Half_Donut_Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2982327809833587142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stationary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8340841986462018536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Half_Donut
   m_TagString: Untagged
   m_Icon: {fileID: 0}

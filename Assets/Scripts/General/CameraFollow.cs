@@ -9,9 +9,8 @@ public class CameraFollow : MonoBehaviour
     
     // private variables
     private Transform target = default;
-
     private Vector3 velocity = Vector3.zero;
-    [SerializeField] private Vector3 offSet = Vector3.zero;
+    private Vector3 offSet = Vector3.zero;
     private Vector3 targetPosition;
 
     internal void StartGame()

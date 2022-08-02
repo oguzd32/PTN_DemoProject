@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Serialization;
@@ -17,13 +18,19 @@ public class PlayerMovement : MonoBehaviour
     // private variables
     private bool isStarted = false;
     private float _ForwardSpeed;
+    private float maxSpeed;
 
     private Vector3 speed;
     
     void Start()
     {
         cc = GetComponent<CharacterController>();
-        _ForwardSpeed = forwardSpeed;
+        maxSpeed = forwardSpeed;
+    }
+
+    private void OnDisable()
+    {
+        _ForwardSpeed = 0;
     }
 
     internal void StartGame()
@@ -36,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isStarted || isFail) return;
         
         speed.x = TouchInput.SwerveDeltaX * 0.05f * horizontalSpeed;
+        _ForwardSpeed = Mathf.Clamp(_ForwardSpeed + 1, 0, maxSpeed);
         speed.z = _ForwardSpeed;
         cc.SimpleMove(speed);
         

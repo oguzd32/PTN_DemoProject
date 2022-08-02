@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
 
     // private variables
     private double lastSwerveTime = 0;
+    private bool isStarted = false;
 
     private void Start()
     {
@@ -26,12 +27,13 @@ public class EnemyController : MonoBehaviour
     internal void StartGame()
     {
         characterAnimator.SetBool("Move", true);
+        isStarted = true;
         movement.StartGame();
     }
 
     private void Update()
     {
-        if(isFail) return;
+        if(isFail || !isStarted) return;
         
         if (Mathf.Abs(transform.position.x) > 5f)
         {
@@ -45,13 +47,15 @@ public class EnemyController : MonoBehaviour
 
     private void RandomSwerve()
     {
-        if(Time.time < lastSwerveTime + swerveInterval) return;
+        float randomTime = Random.Range(0f, 3f);
+        
+        if(Time.time < lastSwerveTime + swerveInterval + randomTime) return;
 
         lastSwerveTime = Time.time;
 
         float randomNumb = Random.Range(0f, 1f);
         
-        movement.Swerve(randomNumb > 0.5f);
+        //movement.Swerve(randomNumb > 0.5f);
     }
     
     public void SetAnimation(string stateName, bool value) => characterAnimator.SetBool(stateName, value);

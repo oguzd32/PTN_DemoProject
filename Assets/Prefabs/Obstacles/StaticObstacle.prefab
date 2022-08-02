@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1163119312873081881}
   - component: {fileID: 4017436901695994067}
   - component: {fileID: -7239491369843578473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StaticObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224632186901436678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.22489025, y: 0, z: 0}
   m_LocalScale: {x: 23, y: 23, z: 23}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &1163119312873081881
 MeshFilter:
   m_ObjectHideFlags: 0

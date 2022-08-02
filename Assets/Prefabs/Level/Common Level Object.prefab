@@ -46,13 +46,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.59
+  m_Height: 1
+  m_Radius: 0.4
   m_SlopeLimit: 0
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &6752527143822010659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 10
-  horizontalSpeed: 12
+  horizontalSpeed: 15
   clampX: 3
   isClamp: 0
 --- !u!114 &8877653471519948548
@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 209761798889094363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 6980963770861757267}
   - {fileID: 5560681046535812740}
@@ -445,8 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.2
   followOnX: 1
-  inGameOffSet: {x: 0, y: 5.24, z: -6.7}
-  offSet: {x: 0, y: 0, z: 0}
+  inGameOffSet: {x: 0, y: 3.5, z: -4}
 --- !u!1 &2476685820134509502
 GameObject:
   m_ObjectHideFlags: 0

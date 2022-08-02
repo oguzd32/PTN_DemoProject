@@ -10,9 +10,6 @@ public class PlayerCollisonHandler : MonoBehaviour
     private PlayerController controller;
     private PlayerMovement movement;
 
-    // private variables
-    private GameObject lastTriggeredObj = default;
-
     private void Start()
     {
         controller = GetComponent<PlayerController>();
@@ -25,10 +22,6 @@ public class PlayerCollisonHandler : MonoBehaviour
         
         GameObject otherObj = other.gameObject;
 
-        // check same object multiple trigger
-        if(lastTriggeredObj == otherObj) return;
-        lastTriggeredObj = otherObj;
-        
         switch (otherObj.tag)
         {
             case "Obstacle":
@@ -39,6 +32,11 @@ public class PlayerCollisonHandler : MonoBehaviour
             case "Finish":
 
                 FinishProcess();
+                break;
+            
+            case "RotatorStick":
+
+                HitRotatorStickProcess();
                 break;
         }
     }
@@ -52,11 +50,9 @@ public class PlayerCollisonHandler : MonoBehaviour
 
     private void OnRotatorProcess(GameObject rotatorObj)
     {
-        if (rotatorObj.TryGetComponent(out Rotator rotator))
-        {
-            transform.position += Vector3.right * (rotator.GetDirection * Time.deltaTime);
-        }
-        else return;
+        if (!rotatorObj.TryGetComponent(out Rotator rotator)) return;
+        
+        transform.position += Vector3.right * (rotator.GetDirection * Time.deltaTime);
 
         if (Mathf.Abs(transform.position.x) > 2)
         {
@@ -73,6 +69,14 @@ public class PlayerCollisonHandler : MonoBehaviour
         }
     }
 
+    private void HitRotatorStickProcess()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendCallback(() => movement.enabled = false);
+        sequence.Append(transform.DOMoveZ(transform.position.z - 10f, 1f));
+        sequence.AppendCallback(() => movement.enabled = true);
+    }
+    
     private void HitObstacleProcess(GameObject hitObj)
     {
         controller.isFail = true;
@@ -86,7 +90,9 @@ public class PlayerCollisonHandler : MonoBehaviour
     
     private void FinishProcess()
     {
+        RankingController.instance.isFinish = true;
         Input.ResetInputAxes();
+        _GameReferenceHolder.cameraFollow.SetTarget(_GameReferenceHolder.paintManager.transform, new Vector3(0, 5, -8.5f));
         movement.enabled = false;
         controller.SetAnimation("Move", false);
         transform.DOMoveX(0, 1f);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 240390300729543157}
   - component: {fileID: 3817313199227668048}
   - component: {fileID: 1377298193384010394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RotatingStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
